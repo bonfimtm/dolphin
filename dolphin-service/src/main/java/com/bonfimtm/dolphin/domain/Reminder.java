@@ -14,6 +14,8 @@ public class Reminder {
 
     private String content;
 
+    private boolean completed;
+
     public Reminder() {
     }
 
@@ -36,6 +38,14 @@ public class Reminder {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     @Override
