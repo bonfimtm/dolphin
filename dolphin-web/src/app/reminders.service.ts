@@ -13,11 +13,19 @@ export class RemindersService {
   constructor(private http: HttpClient) {
   }
 
+  save(reminder: Reminder) {
+    return this.http.post(`${this.baseUrl}`, reminder);
+  }
+
   findAll(): Observable<Reminder[]> {
     return this.http.get<Reminder[]>(`${this.baseUrl}`);
   }
 
   findById(id: number): Observable<Reminder> {
     return this.http.get<Reminder>(`${this.baseUrl}/${id}`);
+  }
+
+  deleteById(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 }
