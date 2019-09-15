@@ -1,4 +1,8 @@
-<p>{{ selectedReminder?.id }} {{ selectedReminder?.content }}</p>
+<p>
+    <i class="far fa-fw fa-check-square"></i> {{ selectedReminder?.id }} {{ selectedReminder?.content }}
+</p>
 <div *ngFor="let reminder of reminders">
-    <p>{{ reminder.id }} {{ reminder.content }}</p>
+    <p>
+        <i class="far fa-fw fa-square"></i> {{ reminder.id }} {{ reminder.content }}
+    </p>
 </div>
