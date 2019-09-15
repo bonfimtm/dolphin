@@ -10,25 +10,45 @@ import { RemindersService } from '../reminders.service';
 })
 export class HomeComponent implements OnInit {
 
-  selectedReminder: Reminder;
   reminders: Reminder[];
+  newReminderContent: string;
 
   constructor(private remindersService: RemindersService) {
   }
 
   ngOnInit() {
-    this.showReminder(1);
     this.showAllReminders();
   }
 
-  showReminder(id: number) {
-    this.remindersService.findById(id)
-      .subscribe((data: Reminder) => this.selectedReminder = data);
+  addReminder() {
+    if (this.newReminderContent) {
+      this.remindersService.save({
+        id: null,
+        content: this.newReminderContent,
+        completed: false,
+      }).subscribe(_ => {
+        this.newReminderContent = '';
+        this.showAllReminders();
+      });
+    }
   }
 
   showAllReminders() {
     this.remindersService.findAll()
       .subscribe((data: Reminder[]) => this.reminders = data);
+  }
+
+  toggleCompleted(reminder: Reminder) {
+    reminder.completed = !reminder.completed;
+    this.remindersService.save(reminder).subscribe(_ => {
+      this.showAllReminders();
+    });
+  }
+
+  deleteReminder(reminder: Reminder) {
+    this.remindersService.deleteById(reminder.id).subscribe(_ => {
+      this.showAllReminders();
+    });
   }
 
 }

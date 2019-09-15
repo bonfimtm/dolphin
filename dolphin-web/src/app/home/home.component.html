@@ -1,8 +1,29 @@
-<p>
-    <i class="far fa-fw fa-check-square"></i> {{ selectedReminder?.id }} {{ selectedReminder?.content }}
-</p>
-<div *ngFor="let reminder of reminders">
-    <p>
-        <i class="far fa-fw fa-square"></i> {{ reminder.id }} {{ reminder.content }}
-    </p>
+<div class="row">
+    <div class="col-md-6">
+        <form (submit)="addReminder()">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Unforgettable thing" aria-label="Reminder content"
+                    aria-describedby="inputReminderContent" name="newReminderContent" [(ngModel)]="newReminderContent">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit" id="inputReminderContent">
+                        Add
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <ul class="list-group" *ngFor="let reminder of reminders">
+            <li class="list-group-item">
+                <i class="far fa-fw fa-lg"
+                    [ngClass]="{'fa-check-circle': reminder.completed, 'fa-circle': !reminder.completed}"
+                    (click)="toggleCompleted(reminder)">
+                </i>
+                {{ reminder.content }}
+                <i class="fas fa-fw fa-lg fa-times float-right" (click)="deleteReminder(reminder)"></i>
+            </li>
+        </ul>
+    </div>
 </div>
