@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Reminder } from './reminder';
 
+import { environment } from '../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class RemindersService {
 
-  baseUrl = 'http://localhost:8080/reminders';
+  baseUrl = `${environment.serverUrl}/reminders`;
 
   constructor(private http: HttpClient) {
   }
