@@ -1,14 +1,16 @@
 {
   "name": "dolphin-web",
   "version": "0.0.0",
+  "license": "GPL-3.0",
+  "repository": "https://github.com/bonfimtm/dolphin.git",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
-    "deploy": "firebase deploy --only=hosting",
+    "start": "ng serve --host=0.0.0.0 --port=8001",
+    "build": "ng build --prod --base-href / --deploy-url /",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "cleanall": "rm -rf node_modules dist"
   },
   "private": true,
   "dependencies": {
