@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = { "http://localhost:4200", "https://spinner-dolphin.web.app/",
-        "https://spinner-dolphin.firebaseapp.com", })
+@CrossOrigin(origins = { "http://localhost:8001", "http://178.62.212.37:8001" })
 @RestController()
 @RequestMapping("/reminders")
 public class ReminderResource {
